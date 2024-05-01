@@ -94,7 +94,6 @@ def dfr_simulation(
                 pkts = [frame_loss[j * 188:(j + 1) * 188] for j in range(f_pkts[i])]
             for pkt in pkts:
                 num_zeros = np.count_nonzero(pkt == 0)
-                # 根据是否使用 FEC 和 0 的数量来判定包的丢失状态
                 threshold = 8 if fec else 0
                 losses.append(1 if num_zeros > threshold else 0) # 1 means packet loss
         # for i in range(n_pkts):
